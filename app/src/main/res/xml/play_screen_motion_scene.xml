@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@id/play_screen_expanded_normal"
+        motion:constraintSetStart="@id/play_screen_minimized"
+        motion:duration="300"
+        app:motionInterpolator="easeInOut">
+        <OnSwipe
+            app:dragDirection="dragUp"
+            app:maxAcceleration="200"
+            app:touchAnchorId="@+id/player_background_view"
+            app:touchAnchorSide="top"
+            />
+
+        <KeyFrameSet>
+            <KeyAttribute
+                app:framePosition="100"
+                app:motionTarget="@id/tvTitle">
+                <CustomAttribute
+                    app:attributeName="alpha"
+                    app:customFloatValue="1.0" />
+            </KeyAttribute>
+
+            <KeyAttribute
+                app:framePosition="70"
+                app:motionTarget="@id/tvTitle">
+                <CustomAttribute
+                    app:attributeName="alpha"
+                    app:customFloatValue="0.0" />
+            </KeyAttribute>
+        </KeyFrameSet>
+
+        <KeyFrameSet>
+            <KeyAttribute
+                app:framePosition="100"
+                app:motionTarget="@id/tvDescription">
+                <CustomAttribute
+                    app:attributeName="alpha"
+                    app:customFloatValue="1.0" />
+            </KeyAttribute>
+
+            <KeyAttribute
+                app:framePosition="70"
+                app:motionTarget="@id/tvDescription">
+                <CustomAttribute
+                    app:attributeName="alpha"
+                    app:customFloatValue="0.0" />
+            </KeyAttribute>
+        </KeyFrameSet>
+
+        <KeyFrameSet>
+            <KeyAttribute
+                app:framePosition="100"
+                app:motionTarget="@id/listRecommendation">
+                <CustomAttribute
+                    app:attributeName="alpha"
+                    app:customFloatValue="1.0" />
+            </KeyAttribute>
+
+            <KeyAttribute
+                app:framePosition="70"
+                app:motionTarget="@id/listRecommendation">
+                <CustomAttribute
+                    app:attributeName="alpha"
+                    app:customFloatValue="0.0" />
+            </KeyAttribute>
+        </KeyFrameSet>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/play_screen_expanded_normal">
+
+        <Constraint
+            android:id="@id/player_background_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="3dp"
+            app:layout_constraintHorizontal_bias="0.0" />
+
+        <Constraint
+            android:id="@id/videoPlayer"
+            android:layout_width="0dp"
+            android:layout_height="211dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/videoPlayer"
+            app:layout_constraintVertical_chainStyle="packed">
+            <CustomAttribute
+                app:attributeName="alpha"
+                app:customFloatValue="1.0"/>
+        </Constraint>
+
+        <Constraint
+            android:id="@id/tvDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle">
+            <CustomAttribute
+                app:attributeName="alpha"
+                app:customFloatValue="1.0"/>
+        </Constraint>
+
+        <Constraint
+            android:id="@id/listRecommendation"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.571"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription"/>
+
+        <Constraint
+            android:id="@id/play_pause"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/close_player"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"/>
+
+        <Constraint
+            android:id="@id/close_player"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"/>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/play_screen_minimized">
+
+        <Constraint
+            android:id="@id/player_background_view"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_marginBottom="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <Constraint
+            android:id="@id/videoPlayer"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <Constraint
+            android:id="@id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@id/play_pause"
+            app:layout_constraintStart_toEndOf="@id/videoPlayer"
+            app:layout_constraintTop_toTopOf="parent">
+            <CustomAttribute
+                app:attributeName="alpha"
+                app:customFloatValue="0.0" />
+        </Constraint>
+
+        <Constraint
+            android:id="@id/play_pause"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@id/close_player"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@id/close_player"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <Constraint
+            android:id="@id/tvDescription"
+            android:layout_width="408dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/videoPlayer"/>
+
+        <Constraint
+            android:id="@id/listRecommendation"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.571"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription"/>
+    </ConstraintSet>
+
+</MotionScene>
